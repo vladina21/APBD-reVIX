@@ -1,0 +1,757 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RevixModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Actori">
+          <Key>
+            <PropertyRef Name="IDActor" />
+          </Key>
+          <Property Name="IDActor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nume" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="Prenume" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="Varsta" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="ImagePath" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="DistributedIn" Type="nvarchar" MaxLength="32" />
+        </EntityType>
+        <EntityType Name="Distributie">
+          <Key>
+            <PropertyRef Name="IDDistributie" />
+          </Key>
+          <Property Name="IDDistributie" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="IDRegizor" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DistributieActori">
+          <Key>
+            <PropertyRef Name="IDDistAct" />
+          </Key>
+          <Property Name="IDDistAct" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDDistributie" Type="int" Nullable="false" />
+          <Property Name="IDActor" Type="int" Nullable="false" />
+          <Property Name="Rol" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Documentare">
+          <Key>
+            <PropertyRef Name="IDDoc" />
+          </Key>
+          <Property Name="IDDoc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Prezentator" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Filme">
+          <Key>
+            <PropertyRef Name="IDFilm" />
+          </Key>
+          <Property Name="IDFilm" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Durata" Type="int" />
+          <Property Name="Gen" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Recenzii">
+          <Key>
+            <PropertyRef Name="IDRecenzie" />
+          </Key>
+          <Property Name="IDRecenzie" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDUser" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="DataPublicarii" Type="date" Nullable="false" />
+          <Property Name="Descriere" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Scor" Type="int" />
+        </EntityType>
+        <EntityType Name="Regizori">
+          <Key>
+            <PropertyRef Name="IDRegizor" />
+          </Key>
+          <Property Name="IDRegizor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nume" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="Prenume" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Seriale">
+          <Key>
+            <PropertyRef Name="IDSerial" />
+          </Key>
+          <Property Name="IDSerial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Nr_sezoane" Type="int" />
+          <Property Name="Gen" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Toate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titlu" Type="nvarchar" MaxLength="64" />
+          <Property Name="DataLansarii" Type="date" Nullable="false" />
+          <Property Name="Descriere" Type="nvarchar" MaxLength="256" />
+          <Property Name="Tip" Type="int" Nullable="false" />
+          <Property Name="ImagePath" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TvShows">
+          <Key>
+            <PropertyRef Name="IDTv" />
+          </Key>
+          <Property Name="IDTv" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Prezentator" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Utilizator">
+          <Key>
+            <PropertyRef Name="IDUser" />
+          </Key>
+          <Property Name="IDUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nume" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="Prenume" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="Parola" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK1_Distributie">
+          <End Role="Toate" Type="Self.Toate" Multiplicity="1" />
+          <End Role="Distributie" Type="Self.Distributie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Toate">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Distributie">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK1_DistributieActori">
+          <End Role="Distributie" Type="Self.Distributie" Multiplicity="1" />
+          <End Role="DistributieActori" Type="Self.DistributieActori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distributie">
+              <PropertyRef Name="IDDistributie" />
+            </Principal>
+            <Dependent Role="DistributieActori">
+              <PropertyRef Name="IDDistributie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK1_Documentare">
+          <End Role="Toate" Type="Self.Toate" Multiplicity="1" />
+          <End Role="Documentare" Type="Self.Documentare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Toate">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Documentare">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK1_Filme">
+          <End Role="Toate" Type="Self.Toate" Multiplicity="1" />
+          <End Role="Filme" Type="Self.Filme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Toate">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Filme">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK1_Recenzii">
+          <End Role="Utilizator" Type="Self.Utilizator" Multiplicity="1" />
+          <End Role="Recenzii" Type="Self.Recenzii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizator">
+              <PropertyRef Name="IDUser" />
+            </Principal>
+            <Dependent Role="Recenzii">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK1_Seriale">
+          <End Role="Toate" Type="Self.Toate" Multiplicity="1" />
+          <End Role="Seriale" Type="Self.Seriale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Toate">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Seriale">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK1_TV">
+          <End Role="Toate" Type="Self.Toate" Multiplicity="1" />
+          <End Role="TvShows" Type="Self.TvShows" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Toate">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TvShows">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK2_Distributie">
+          <End Role="Regizori" Type="Self.Regizori" Multiplicity="1" />
+          <End Role="Distributie" Type="Self.Distributie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Regizori">
+              <PropertyRef Name="IDRegizor" />
+            </Principal>
+            <Dependent Role="Distributie">
+              <PropertyRef Name="IDRegizor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK2_DistributieActori">
+          <End Role="Actori" Type="Self.Actori" Multiplicity="1" />
+          <End Role="DistributieActori" Type="Self.DistributieActori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Actori">
+              <PropertyRef Name="IDActor" />
+            </Principal>
+            <Dependent Role="DistributieActori">
+              <PropertyRef Name="IDActor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK2_Recenzii">
+          <End Role="Toate" Type="Self.Toate" Multiplicity="1" />
+          <End Role="Recenzii" Type="Self.Recenzii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Toate">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Recenzii">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RevixModelStoreContainer">
+          <EntitySet Name="Actori" EntityType="Self.Actori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Distributie" EntityType="Self.Distributie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DistributieActori" EntityType="Self.DistributieActori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Documentare" EntityType="Self.Documentare" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Filme" EntityType="Self.Filme" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Recenzii" EntityType="Self.Recenzii" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Regizori" EntityType="Self.Regizori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Seriale" EntityType="Self.Seriale" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Toate" EntityType="Self.Toate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TvShows" EntityType="Self.TvShows" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Utilizator" EntityType="Self.Utilizator" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK1_Distributie" Association="Self.FK1_Distributie">
+            <End Role="Toate" EntitySet="Toate" />
+            <End Role="Distributie" EntitySet="Distributie" />
+          </AssociationSet>
+          <AssociationSet Name="FK1_DistributieActori" Association="Self.FK1_DistributieActori">
+            <End Role="Distributie" EntitySet="Distributie" />
+            <End Role="DistributieActori" EntitySet="DistributieActori" />
+          </AssociationSet>
+          <AssociationSet Name="FK1_Documentare" Association="Self.FK1_Documentare">
+            <End Role="Toate" EntitySet="Toate" />
+            <End Role="Documentare" EntitySet="Documentare" />
+          </AssociationSet>
+          <AssociationSet Name="FK1_Filme" Association="Self.FK1_Filme">
+            <End Role="Toate" EntitySet="Toate" />
+            <End Role="Filme" EntitySet="Filme" />
+          </AssociationSet>
+          <AssociationSet Name="FK1_Recenzii" Association="Self.FK1_Recenzii">
+            <End Role="Utilizator" EntitySet="Utilizator" />
+            <End Role="Recenzii" EntitySet="Recenzii" />
+          </AssociationSet>
+          <AssociationSet Name="FK1_Seriale" Association="Self.FK1_Seriale">
+            <End Role="Toate" EntitySet="Toate" />
+            <End Role="Seriale" EntitySet="Seriale" />
+          </AssociationSet>
+          <AssociationSet Name="FK1_TV" Association="Self.FK1_TV">
+            <End Role="Toate" EntitySet="Toate" />
+            <End Role="TvShows" EntitySet="TvShows" />
+          </AssociationSet>
+          <AssociationSet Name="FK2_Distributie" Association="Self.FK2_Distributie">
+            <End Role="Regizori" EntitySet="Regizori" />
+            <End Role="Distributie" EntitySet="Distributie" />
+          </AssociationSet>
+          <AssociationSet Name="FK2_DistributieActori" Association="Self.FK2_DistributieActori">
+            <End Role="Actori" EntitySet="Actori" />
+            <End Role="DistributieActori" EntitySet="DistributieActori" />
+          </AssociationSet>
+          <AssociationSet Name="FK2_Recenzii" Association="Self.FK2_Recenzii">
+            <End Role="Toate" EntitySet="Toate" />
+            <End Role="Recenzii" EntitySet="Recenzii" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RevixModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Documentare">
+          <Key>
+            <PropertyRef Name="IDDoc" />
+          </Key>
+          <Property Name="IDDoc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Prezentator" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Toate" Relationship="Self.FK1_Documentare" FromRole="Documentare" ToRole="Toate" />
+        </EntityType>
+        <EntityType Name="Filme">
+          <Key>
+            <PropertyRef Name="IDFilm" />
+          </Key>
+          <Property Name="IDFilm" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Durata" Type="Int32" />
+          <Property Name="Gen" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Toate" Relationship="Self.FK1_Filme" FromRole="Filme" ToRole="Toate" />
+        </EntityType>
+        <EntityType Name="Regizori">
+          <Key>
+            <PropertyRef Name="IDRegizor" />
+          </Key>
+          <Property Name="IDRegizor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nume" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Prenume" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Distributie" Relationship="RevixModel.FK2_Distributie" FromRole="Regizori" ToRole="Distributie" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Toate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titlu" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="DataLansarii" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Descriere" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Tip" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Documentare" Relationship="Self.FK1_Documentare" FromRole="Toate" ToRole="Documentare" />
+          <NavigationProperty Name="Filme" Relationship="Self.FK1_Filme" FromRole="Toate" ToRole="Filme" />
+          <NavigationProperty Name="TvShows" Relationship="Self.FK1_TV" FromRole="Toate" ToRole="TvShows" />
+          <Property Name="ImagePath" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Distributie" Relationship="RevixModel.FK1_Distributie" FromRole="Toate" ToRole="Distributie" />
+          <NavigationProperty Name="Seriale" Relationship="RevixModel.FK1_Seriale" FromRole="Toate" ToRole="Seriale" />
+          <NavigationProperty Name="Recenzii" Relationship="RevixModel.FK2_Recenzii" FromRole="Toate" ToRole="Recenzii" />
+        </EntityType>
+        <EntityType Name="TvShows">
+          <Key>
+            <PropertyRef Name="IDTv" />
+          </Key>
+          <Property Name="IDTv" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Prezentator" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Toate" Relationship="Self.FK1_TV" FromRole="TvShows" ToRole="Toate" />
+        </EntityType>
+        <EntityType Name="Utilizator">
+          <Key>
+            <PropertyRef Name="IDUser" />
+          </Key>
+          <Property Name="IDUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nume" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Prenume" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Parola" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Recenzii" Relationship="RevixModel.FK1_Recenzii" FromRole="Utilizator" ToRole="Recenzii" />
+        </EntityType>
+        <Association Name="FK1_Documentare">
+          <End Role="Toate" Type="Self.Toate" Multiplicity="1" />
+          <End Role="Documentare" Type="Self.Documentare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Toate">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Documentare">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK1_Filme">
+          <End Role="Toate" Type="Self.Toate" Multiplicity="1" />
+          <End Role="Filme" Type="Self.Filme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Toate">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Filme">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK1_TV">
+          <End Role="Toate" Type="Self.Toate" Multiplicity="1" />
+          <End Role="TvShows" Type="Self.TvShows" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Toate">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TvShows">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RevixEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Documentare" EntityType="Self.Documentare" />
+          <EntitySet Name="Filme" EntityType="Self.Filme" />
+          <EntitySet Name="Regizori" EntityType="Self.Regizori" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Toate" EntityType="Self.Toate" />
+          <EntitySet Name="TvShows" EntityType="Self.TvShows" />
+          <EntitySet Name="Utilizator" EntityType="Self.Utilizator" />
+          <AssociationSet Name="FK1_Documentare" Association="Self.FK1_Documentare">
+            <End Role="Toate" EntitySet="Toate" />
+            <End Role="Documentare" EntitySet="Documentare" />
+          </AssociationSet>
+          <AssociationSet Name="FK1_Filme" Association="Self.FK1_Filme">
+            <End Role="Toate" EntitySet="Toate" />
+            <End Role="Filme" EntitySet="Filme" />
+          </AssociationSet>
+          <AssociationSet Name="FK1_TV" Association="Self.FK1_TV">
+            <End Role="Toate" EntitySet="Toate" />
+            <End Role="TvShows" EntitySet="TvShows" />
+          </AssociationSet>
+          <EntitySet Name="DistributieActori" EntityType="RevixModel.DistributieActori" />
+          <EntitySet Name="Distributie" EntityType="RevixModel.Distributie" />
+          <AssociationSet Name="FK1_Distributie" Association="RevixModel.FK1_Distributie">
+            <End Role="Toate" EntitySet="Toate" />
+            <End Role="Distributie" EntitySet="Distributie" />
+          </AssociationSet>
+          <AssociationSet Name="FK1_DistributieActori" Association="RevixModel.FK1_DistributieActori">
+            <End Role="Distributie" EntitySet="Distributie" />
+            <End Role="DistributieActori" EntitySet="DistributieActori" />
+          </AssociationSet>
+          <AssociationSet Name="FK2_Distributie" Association="RevixModel.FK2_Distributie">
+            <End Role="Regizori" EntitySet="Regizori" />
+            <End Role="Distributie" EntitySet="Distributie" />
+          </AssociationSet>
+          <EntitySet Name="Seriale" EntityType="RevixModel.Seriale" />
+          <AssociationSet Name="FK1_Seriale" Association="RevixModel.FK1_Seriale">
+            <End Role="Toate" EntitySet="Toate" />
+            <End Role="Seriale" EntitySet="Seriale" />
+          </AssociationSet>
+          <EntitySet Name="Recenzii" EntityType="RevixModel.Recenzii" />
+          <AssociationSet Name="FK1_Recenzii" Association="RevixModel.FK1_Recenzii">
+            <End Role="Utilizator" EntitySet="Utilizator" />
+            <End Role="Recenzii" EntitySet="Recenzii" />
+          </AssociationSet>
+          <AssociationSet Name="FK2_Recenzii" Association="RevixModel.FK2_Recenzii">
+            <End Role="Toate" EntitySet="Toate" />
+            <End Role="Recenzii" EntitySet="Recenzii" />
+          </AssociationSet>
+          <EntitySet Name="Actori" EntityType="RevixModel.Actori" />
+          <AssociationSet Name="FK2_DistributieActori" Association="RevixModel.FK2_DistributieActori">
+            <End Role="Actori" EntitySet="Actori" />
+            <End Role="DistributieActori" EntitySet="DistributieActori" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="DistributieActori">
+          <Key>
+            <PropertyRef Name="IDDistAct" />
+          </Key>
+          <Property Name="IDDistAct" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDDistributie" Type="Int32" Nullable="false" />
+          <Property Name="IDActor" Type="Int32" Nullable="false" />
+          <Property Name="Rol" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Distributie" Relationship="RevixModel.FK1_DistributieActori" FromRole="DistributieActori" ToRole="Distributie" />
+          <NavigationProperty Name="Actori" Relationship="RevixModel.FK2_DistributieActori" FromRole="DistributieActori" ToRole="Actori" />
+        </EntityType>
+        <EntityType Name="Distributie">
+          <Key>
+            <PropertyRef Name="IDDistributie" />
+          </Key>
+          <Property Name="IDDistributie" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="IDRegizor" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Toate" Relationship="RevixModel.FK1_Distributie" FromRole="Distributie" ToRole="Toate" />
+          <NavigationProperty Name="DistributieActori" Relationship="RevixModel.FK1_DistributieActori" FromRole="Distributie" ToRole="DistributieActori" />
+          <NavigationProperty Name="Regizori" Relationship="RevixModel.FK2_Distributie" FromRole="Distributie" ToRole="Regizori" />
+        </EntityType>
+        <Association Name="FK1_Distributie">
+          <End Type="RevixModel.Toate" Role="Toate" Multiplicity="1" />
+          <End Type="RevixModel.Distributie" Role="Distributie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Toate">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Distributie">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK1_DistributieActori">
+          <End Type="RevixModel.Distributie" Role="Distributie" Multiplicity="1" />
+          <End Type="RevixModel.DistributieActori" Role="DistributieActori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distributie">
+              <PropertyRef Name="IDDistributie" />
+            </Principal>
+            <Dependent Role="DistributieActori">
+              <PropertyRef Name="IDDistributie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK2_Distributie">
+          <End Type="RevixModel.Regizori" Role="Regizori" Multiplicity="1" />
+          <End Type="RevixModel.Distributie" Role="Distributie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Regizori">
+              <PropertyRef Name="IDRegizor" />
+            </Principal>
+            <Dependent Role="Distributie">
+              <PropertyRef Name="IDRegizor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Seriale">
+          <Key>
+            <PropertyRef Name="IDSerial" />
+          </Key>
+          <Property Name="IDSerial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Nr_sezoane" Type="Int32" />
+          <Property Name="Gen" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Toate" Relationship="RevixModel.FK1_Seriale" FromRole="Seriale" ToRole="Toate" />
+        </EntityType>
+        <Association Name="FK1_Seriale">
+          <End Type="RevixModel.Toate" Role="Toate" Multiplicity="1" />
+          <End Type="RevixModel.Seriale" Role="Seriale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Toate">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Seriale">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Recenzii">
+          <Key>
+            <PropertyRef Name="IDRecenzie" />
+          </Key>
+          <Property Name="IDRecenzie" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDUser" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="DataPublicarii" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Descriere" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Scor" Type="Int32" />
+          <NavigationProperty Name="Utilizator" Relationship="RevixModel.FK1_Recenzii" FromRole="Recenzii" ToRole="Utilizator" />
+          <NavigationProperty Name="Toate" Relationship="RevixModel.FK2_Recenzii" FromRole="Recenzii" ToRole="Toate" />
+        </EntityType>
+        <Association Name="FK1_Recenzii">
+          <End Type="RevixModel.Utilizator" Role="Utilizator" Multiplicity="1" />
+          <End Type="RevixModel.Recenzii" Role="Recenzii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizator">
+              <PropertyRef Name="IDUser" />
+            </Principal>
+            <Dependent Role="Recenzii">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK2_Recenzii">
+          <End Type="RevixModel.Toate" Role="Toate" Multiplicity="1" />
+          <End Type="RevixModel.Recenzii" Role="Recenzii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Toate">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Recenzii">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Actori">
+          <Key>
+            <PropertyRef Name="IDActor" />
+          </Key>
+          <Property Name="IDActor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nume" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="Prenume" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="Varsta" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="ImagePath" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DistributedIn" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DistributieActori" Relationship="RevixModel.FK2_DistributieActori" FromRole="Actori" ToRole="DistributieActori" />
+        </EntityType>
+        <Association Name="FK2_DistributieActori">
+          <End Type="RevixModel.Actori" Role="Actori" Multiplicity="1" />
+          <End Type="RevixModel.DistributieActori" Role="DistributieActori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Actori">
+              <PropertyRef Name="IDActor" />
+            </Principal>
+            <Dependent Role="DistributieActori">
+              <PropertyRef Name="IDActor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RevixModelStoreContainer" CdmEntityContainer="RevixEntities">
+          <EntitySetMapping Name="Documentare">
+            <EntityTypeMapping TypeName="RevixModel.Documentare">
+              <MappingFragment StoreEntitySet="Documentare">
+                <ScalarProperty Name="IDDoc" ColumnName="IDDoc" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Prezentator" ColumnName="Prezentator" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Filme">
+            <EntityTypeMapping TypeName="RevixModel.Filme">
+              <MappingFragment StoreEntitySet="Filme">
+                <ScalarProperty Name="IDFilm" ColumnName="IDFilm" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Durata" ColumnName="Durata" />
+                <ScalarProperty Name="Gen" ColumnName="Gen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Regizori">
+            <EntityTypeMapping TypeName="RevixModel.Regizori">
+              <MappingFragment StoreEntitySet="Regizori">
+                <ScalarProperty Name="IDRegizor" ColumnName="IDRegizor" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="RevixModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Toate">
+            <EntityTypeMapping TypeName="RevixModel.Toate">
+              <MappingFragment StoreEntitySet="Toate">
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Titlu" ColumnName="Titlu" />
+                <ScalarProperty Name="DataLansarii" ColumnName="DataLansarii" />
+                <ScalarProperty Name="Descriere" ColumnName="Descriere" />
+                <ScalarProperty Name="Tip" ColumnName="Tip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TvShows">
+            <EntityTypeMapping TypeName="RevixModel.TvShows">
+              <MappingFragment StoreEntitySet="TvShows">
+                <ScalarProperty Name="IDTv" ColumnName="IDTv" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Prezentator" ColumnName="Prezentator" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Utilizator">
+            <EntityTypeMapping TypeName="RevixModel.Utilizator">
+              <MappingFragment StoreEntitySet="Utilizator">
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Parola" ColumnName="Parola" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DistributieActori">
+            <EntityTypeMapping TypeName="RevixModel.DistributieActori">
+              <MappingFragment StoreEntitySet="DistributieActori">
+                <ScalarProperty Name="Rol" ColumnName="Rol" />
+                <ScalarProperty Name="IDActor" ColumnName="IDActor" />
+                <ScalarProperty Name="IDDistributie" ColumnName="IDDistributie" />
+                <ScalarProperty Name="IDDistAct" ColumnName="IDDistAct" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Distributie">
+            <EntityTypeMapping TypeName="RevixModel.Distributie">
+              <MappingFragment StoreEntitySet="Distributie">
+                <ScalarProperty Name="IDRegizor" ColumnName="IDRegizor" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDDistributie" ColumnName="IDDistributie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Seriale">
+            <EntityTypeMapping TypeName="RevixModel.Seriale">
+              <MappingFragment StoreEntitySet="Seriale">
+                <ScalarProperty Name="Gen" ColumnName="Gen" />
+                <ScalarProperty Name="Nr_sezoane" ColumnName="Nr_sezoane" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDSerial" ColumnName="IDSerial" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Recenzii">
+            <EntityTypeMapping TypeName="RevixModel.Recenzii">
+              <MappingFragment StoreEntitySet="Recenzii">
+                <ScalarProperty Name="Scor" ColumnName="Scor" />
+                <ScalarProperty Name="Descriere" ColumnName="Descriere" />
+                <ScalarProperty Name="DataPublicarii" ColumnName="DataPublicarii" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+                <ScalarProperty Name="IDRecenzie" ColumnName="IDRecenzie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Actori">
+            <EntityTypeMapping TypeName="RevixModel.Actori">
+              <MappingFragment StoreEntitySet="Actori">
+                <ScalarProperty Name="DistributedIn" ColumnName="DistributedIn" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="Varsta" ColumnName="Varsta" />
+                <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="IDActor" ColumnName="IDActor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
